@@ -1,0 +1,32 @@
+modLoader = "javafml"
+loaderVersion = "[1,)"
+license = "MIT"
+
+[[mods]]
+modId = "boltrifle"
+version = "2.0.0"
+displayName = "Bolt Action Rifle"
+description = '''
+An animated M700-style bolt-action rifle: scoped aiming, 5-round magazine, full reload and chambering animations, craftable ammunition. Requires GeckoLib.
+'''
+
+[[dependencies.boltrifle]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.boltrifle]]
+modId = "geckolib"
+type = "required"
+versionRange = "[4.7,5)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.boltrifle]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1]"
+ordering = "NONE"
+side = "BOTH"

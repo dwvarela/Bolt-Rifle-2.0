@@ -1,0 +1,51 @@
+plugins {
+	id 'java-library'
+	id 'net.neoforged.moddev' version '2.0.78'
+}
+
+version = project.mod_version
+group = project.mod_group_id
+
+base {
+	archivesName = project.mod_id
+}
+
+repositories {
+	mavenLocal()
+	maven {
+		name = 'GeckoLib'
+		url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+		content {
+			includeGroup 'software.bernie.geckolib'
+		}
+	}
+}
+
+dependencies {
+	implementation "software.bernie.geckolib:geckolib-neoforge-${project.minecraft_version}:${project.geckolib_version}"
+}
+
+neoForge {
+	version = project.neo_version
+
+	runs {
+		client {
+			client()
+		}
+		server {
+			server()
+			programArgument '--nogui'
+		}
+	}
+
+	mods {
+		"${project.mod_id}" {
+			sourceSet sourceSets.main
+		}
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.encoding = 'UTF-8'
+	options.release = 21
+}
